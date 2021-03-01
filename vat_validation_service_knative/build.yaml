@@ -12,4 +12,4 @@ spec:
       kind: "ImageStreamTag"
       name: "nc-vatvalidationservice:latest"
   postCommit: 
-      script: "bundle exec rake test"
+      script: "oc apply -f service.yaml"
