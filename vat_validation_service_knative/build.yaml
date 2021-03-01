@@ -6,19 +6,17 @@ spec:
   source: 
     git:
       uri: "https://github.com/NeClaes/Stage"
-      contextDir: vat_validation_service_knative
+    contextDir: vat_validation_service_knative
     type: Git
+  strategy:
+    sourceStrategy:
+      from:
+        kind: "ImageStreamTag"
+        name: "nodejs:latest"
   output:
     to:
       kind: "ImageStreamTag"
       name: "nc-vatvalidationservice:latest"
-  strategy:
-    type: Source
-    sourceStrategy:
-      from:
-        kind: ImageStreamTag
-        namespace: openshift
-        name: 'nodejs:latest'
   triggers:
     - type: "GitHub"
       github:
