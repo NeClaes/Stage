@@ -6,7 +6,6 @@ spec:
   template:
     spec:
       containers:
-      - build: .
       - image: nc-vatvalidation-test-nodejs
         env:
         - name: TARGET
