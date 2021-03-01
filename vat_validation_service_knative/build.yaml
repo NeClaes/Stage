@@ -6,7 +6,7 @@ spec:
   source: 
     git:
       uri: "https://github.com/NeClaes/Stage.git"
-    contextDir: vat_validation_service_knative 
+      contextDir: vat_validation_service_knative 
   output: 
     to:
       kind: "ImageStreamTag"
