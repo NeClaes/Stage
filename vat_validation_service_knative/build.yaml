@@ -5,11 +5,9 @@ metadata:
 spec:
   source: 
     git:
-      uri: "https://github.com/NeClaes/Stage.git"
+      uri: "https://github.com/NeClaes/Stage"
       contextDir: vat_validation_service_knative 
   output: 
     to:
       kind: "ImageStreamTag"
       name: "nc-vatvalidationservice:latest"
-  postCommit: 
-      script: "oc apply -f service.yaml"
