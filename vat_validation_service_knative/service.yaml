@@ -1,0 +1,17 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: nc-vatvalidation-test
+spec:
+  template:
+    spec:
+      containers:
+      - image: docker.io/neclaes/nc-vatvalidation-test-nodejs
+        env:
+        - name: TARGET
+          value: "Node.js Sample v1"
+        - name: SERVER_VALUES_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: server-values
+              key: PORT
