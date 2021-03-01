@@ -1,8 +1,15 @@
-apiVersion: build.knative.dev/v1alpha1
-kind: Build
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
 metadata:
-  name: nc-vatvalidation-test
+  name: "nc-vatvalidationservice-build" 
 spec:
-  steps:
-  - build: .
-  - image: nc-vatvalidation-test-nodejs
+  source: 
+    git:
+      uri: "https://github.com/openshift/ruby-hello-world"
+    contextDir: vat_validation_service_knative
+  output: 
+    to:
+      kind: "ImageStreamTag"
+      name: "nc-vatvalidationservice:latest"
+  postCommit: 
+      script: "bundle exec rake test"

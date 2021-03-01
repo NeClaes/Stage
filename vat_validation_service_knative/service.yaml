@@ -1,12 +1,12 @@
 apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
-  name: nc-vatvalidation-test
+  name: nc-vatvalidation-service
 spec:
   template:
     spec:
       containers:
-      - image: nc-vatvalidation-test-nodejs
+      - image: nc-vatvalidationservice:latest
         env:
         - name: TARGET
           value: "Node.js Sample v1"
