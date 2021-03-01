@@ -6,7 +6,8 @@ spec:
   template:
     spec:
       containers:
-      - image: docker.io/neclaes/nc-vatvalidation-test-nodejs
+      - build: .
+      - image: nc-vatvalidation-test-nodejs
         env:
         - name: TARGET
           value: "Node.js Sample v1"

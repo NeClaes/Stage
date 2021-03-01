@@ -1,0 +1,8 @@
+apiVersion: build.knative.dev/v1alpha1
+kind: Build
+metadata:
+  name: nc-vatvalidation-test
+spec:
+  steps:
+  - build: .
+  - image: nc-vatvalidation-test-nodejs
