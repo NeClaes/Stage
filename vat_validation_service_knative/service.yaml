@@ -6,20 +6,7 @@ spec:
   template:
     spec:
       containers:
-        source: 
-          git:
-            uri: "https://github.com/NeClaes/Stage"
-            contextDir: vat_validation_service_knative
-        output: 
-          to:
-            kind: "ImageStreamTag"
-            name: "nc-vatvalidationservice:latest"
-        strategy:
-          type: "Docker"
-          dockerStrategy:
-            from:
-              kind: "ImageStreamTag"
-              name: "node:12-slim" 
+        - image: nc-vatvalidationservice
         env:
         - name: RESPONSE
           value: "Hello Serverless!"

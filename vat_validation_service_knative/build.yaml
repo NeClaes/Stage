@@ -7,6 +7,7 @@ spec:
     git:
       uri: "https://github.com/NeClaes/Stage"
       contextDir: vat_validation_service_knative
+    type: Git
   output: 
     to:
       kind: "ImageStreamTag"
@@ -16,4 +17,8 @@ spec:
     dockerStrategy:
       from:
         kind: "ImageStreamTag"
-        name: "node:12-slim" 
+        name: "node:12-slim"
+  triggers:
+    type: "GitHub"
+    github:
+      secret: "secret101"
