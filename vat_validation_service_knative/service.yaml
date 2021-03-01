@@ -6,10 +6,23 @@ spec:
   template:
     spec:
       containers:
-      - image: nc-vatvalidationservice:latest
+        source: 
+          git:
+            uri: "https://github.com/NeClaes/Stage"
+            contextDir: vat_validation_service_knative
+        output: 
+          to:
+            kind: "ImageStreamTag"
+            name: "nc-vatvalidationservice:latest"
+        strategy:
+          type: "Docker"
+          dockerStrategy:
+            from:
+              kind: "ImageStreamTag"
+              name: "node:12-slim" 
         env:
-        - name: TARGET
-          value: "Node.js Sample v1"
+        - name: RESPONSE
+          value: "Hello Serverless!"
         - name: SERVER_VALUES_PORT
           valueFrom:
             configMapKeyRef:
