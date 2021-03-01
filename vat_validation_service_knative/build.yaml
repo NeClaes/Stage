@@ -9,7 +9,6 @@ spec:
       contextDir: vat_validation_service_knative
     type: Git
   output: 
-    to:
       kind: "ImageStreamTag"
       name: "nc-vatvalidationservice:latest"
   strategy:
@@ -17,8 +16,9 @@ spec:
     dockerStrategy:
       from:
         kind: "ImageStreamTag"
-        name: "node:12-slim"
+        namespace: openshift
+        name: "node:latest"
   triggers:
-    type: "GitHub"
-    github:
-      secret: "secret101"
+    - type: "GitHub"
+      github:
+        secret: "secret101"
