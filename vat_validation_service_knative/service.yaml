@@ -6,12 +6,13 @@ spec:
   template:
     spec:
       containers:
-        - image: nc-vatvalidationservice
-        env:
-        - name: RESPONSE
-          value: "Hello Serverless!"
-        - name: SERVER_VALUES_PORT
-          valueFrom:
-            configMapKeyRef:
-              name: server-values
-              key: PORT
+        - image: <link of imageStream>
+          env:
+          - name: RESPONSE
+            value: "Hello Serverless!"
+          - name: SERVER_VALUES_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: server-values
+                key: PORT
+           

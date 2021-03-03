@@ -5,14 +5,16 @@ metadata:
 spec:
   source: 
     git:
-      uri: "https://github.com/NeClaes/Stage"
+      uri: "https://github.com/NeClaes/Stage.git"
     contextDir: vat_validation_service_knative
     type: Git
   strategy:
-    sourceStrategy:
+    type: Source
+      sourceStrategy:
       from:
         kind: "ImageStreamTag"
-        name: "nodejs:latest"
+        namespace: openshift
+        name: "nodejs:12-ubi7"
   output:
     to:
       kind: "ImageStreamTag"

@@ -1,0 +1,4 @@
+kind: ImageStream
+apiVersion: build.openshift.io/v1
+metadata:
+  name: "nc-vatvalidationservice" 
