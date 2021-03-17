@@ -12,9 +12,10 @@ const app = express();
 
 app.get('/', async (req, res) => {
     try {
+        console.log('start')
         const response = await got('https://www.coolblue.be/nl/consoles/computerplatform:nintendo-switch').then(response => {
             const $ = cheerio.load(response.body)
-
+            console.log(response.body)
             let consoles = []
             let j = 1;
 
@@ -35,13 +36,14 @@ app.get('/', async (req, res) => {
                         j++
                     }
                 }
-
+                console.log('test')
                 consoles.push({ name: text_1, price: text_2, url: `https://www.coolblue.be${url}`, leverbaar: isLeverbaar })
 
             })
 
             res.status(200).send(consoles)
         }).catch(err => {
+            console.log('binne', err)
             res.status(500).send({
                 error: 500,
                 message: err.message
@@ -50,6 +52,7 @@ app.get('/', async (req, res) => {
 
 
     } catch (error) {
+        console.log('buiten', err)
         res.status(500).send({
             error: 500,
             message: error.message
