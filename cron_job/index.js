@@ -4,6 +4,8 @@ const express = require('express')
 const got = require('got')
 const cheerio = require('cheerio')
 
+process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
+
 const port = 8080
 
 const app = express();
