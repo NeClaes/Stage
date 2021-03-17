@@ -3,10 +3,8 @@
 const express = require('express')
 const got = require('got')
 const cheerio = require('cheerio')
-const dotenv = require('dotenv')
-dotenv.config();
 
-const port = process.env.PORT || 8080
+const port = 8080
 
 const app = express();
 
