@@ -1,0 +1,30 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: scheduled-job-dv-service
+spec:
+  template:
+    spec:
+      containers:
+        - image: docker.io/neclaes/publisher:latest
+          env:
+            - name: BROKER_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: app-env-config
+                  key: BROKER_URL
+            - name: BROKER_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: app-env-config
+                  key: BROKER_PORT
+            - name: BROKER_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: app-env-config
+                  key: BROKER_USER
+            - name: BROKER_PWD
+              valueFrom:
+                configMapKeyRef:
+                  name: app-env-config
+                  key: BROKER_PWD
