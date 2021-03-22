@@ -11,6 +11,17 @@ References:
 * Package MQTT from npm: https://www.npmjs.com/package/mqtt
 
 ## Openshift
+* Create a new project.
+* Make application of ArtemisMQ image.
+* Change configmap variables in template file. This file contains:
+    * ConfigMap: with environment variables.
+    * DeploymentConfig: creates the subscriber app.
+* Apply, process and create the template file.
+* Apply the service file. This file contains:
+    * Creates the publisher app.
+* Apply the pingsource file. This file contains:
+    * Will create a new publisher app at a given time interval.
+
 ```
 oc new-project scheduled-job-dv --display-name="Scheduled Job - Test"
 
@@ -28,18 +39,18 @@ oc apply -f pingsource.yaml
 ```
 
 ## Publisher
-* When started it will make a connection to the Artemis ActiveMQ app
-* It wil publish a json object to the `change-db` queue
-* And end the connection
+* When started it will make a connection to the Artemis ActiveMQ app.
+* It wil publish a json object to the `change-db` queue.
+* And end the connection.
 
 ```
 docker run -it --rm -p 8011:8011 -e PORT=8011 -e BROKER_URL=<IP_ADDRESS> -e BROKER_PORT=<PORT> -e BROKER_USER=<NAME> -e BROKER_PWD=<PASSWORD>  neclaes/publisher
 
 ```
 
-### Subscriber
-* When started it wil make a connection to the Artemis ActiveMQ app
-* it will subcribe to the queue `change-db` and listen to incoming events
+## Subscriber
+* When started it wil make a connection to the Artemis ActiveMQ app.
+* It will subcribe to the queue `change-db` and listen to incoming events.
 
 ```
 docker run -it --rm -p 8012:8012 -e PORT=8011 -e BROKER_URL=<IP_ADDRESS> -e BROKER_PORT=<PORT> -e BROKER_USER=<NAME> -e BROKER_PWD=<PASSWORD>  neclaes/subscriber
