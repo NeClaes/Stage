@@ -15,15 +15,15 @@ objects:
 - apiVersion: v1
   kind: DeploymentConfig
   metadata:
-    name: broker-sub
+    name: scheduled-job-dv-sub
   spec:
     replicas: 1
     selector: 
-      name: broker-sub
+      name: scheduled-job-dv-sub
     template:
       metadata:
         labels:
-          name: broker-sub
+          name: scheduled-job-dv-sub
       spec:
         containers:
         - image: docker.io/neclaes/subscriber:latest
