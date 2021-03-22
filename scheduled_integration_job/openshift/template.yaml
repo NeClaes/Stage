@@ -10,8 +10,8 @@ objects:
   data:
     BROKER_URL : '<IP_POT_ARTEMIS>'
     BROKER_PORT : '61616'
-    BROKER_USER : 'artemis'
-    BROKER_PWD : 'simetraehcapa'
+    BROKER_USER : '<NAME>'
+    BROKER_PWD : '<PASSWORD>'
 - apiVersion: v1
   kind: DeploymentConfig
   metadata:
